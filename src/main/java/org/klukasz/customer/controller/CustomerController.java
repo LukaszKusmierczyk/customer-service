@@ -1,6 +1,7 @@
 package org.klukasz.customer.controller;
 
 import org.klukasz.customer.model.CustomerDTO;
+import org.klukasz.customer.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,11 +13,14 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
 
+    private final CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
     @GetMapping
     public List<CustomerDTO> getCustomers() {
-        List<CustomerDTO> customers = new ArrayList<>();
-        customers.add(new CustomerDTO(1L, "COCA-COLA", "Coca Cola"));
-
-        return customers;
+        return customerService.getCustomers();
     }
 }
