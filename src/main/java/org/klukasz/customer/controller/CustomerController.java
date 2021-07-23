@@ -3,10 +3,9 @@ package org.klukasz.customer.controller;
 import org.klukasz.customer.model.CustomerDTO;
 import org.klukasz.customer.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,5 +21,10 @@ public class CustomerController {
     @GetMapping
     public List<CustomerDTO> getCustomers() {
         return customerService.getCustomers();
+    }
+
+    @GetMapping("{customerCode}")
+    public CustomerDTO getCustomer(@PathVariable String customerCode) {
+        return customerService.getCustomer(customerCode);
     }
 }

@@ -9,7 +9,11 @@ public class CustomerDTO {
 
     }
 
-    public CustomerDTO(Long id, String code, String name) {
+    public static CustomerDTO of(Customer customer) {
+        return new CustomerDTO(customer.getId(), customer.getCode(), customer.getName());
+    }
+
+    private CustomerDTO(Long id, String code, String name) {
         this.id = id;
         this.code = code;
         this.name = name;
