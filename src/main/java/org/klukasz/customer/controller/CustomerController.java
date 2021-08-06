@@ -23,7 +23,7 @@ public class CustomerController {
         return customerService.getCustomers();
     }
 
-    @GetMapping("{customerCode}")
+    @GetMapping("/{customerCode}")
     public CustomerDTO getCustomer(@PathVariable String customerCode) {
         return customerService.getCustomer(customerCode);
     }
