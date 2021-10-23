@@ -1,2 +1,11 @@
-rootProject.name = 'customer-service'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
 
+        maven {
+            url "https://lkusmierczyk.jfrog.io/artifactory/default-maven-local/"
+        }
+    }
+}
+
+rootProject.name = 'customer-service'
