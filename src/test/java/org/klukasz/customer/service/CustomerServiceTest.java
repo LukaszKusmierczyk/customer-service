@@ -15,7 +15,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
 class CustomerServiceTest {
 
     private static final String CODE = "Coca-Cola";
@@ -25,7 +24,6 @@ class CustomerServiceTest {
     @Mock
     private CustomerRepository customerRepository;
 
-    @Mock
     private Customer customer;
 
     private CustomerService customerService;
@@ -35,17 +33,17 @@ class CustomerServiceTest {
     @BeforeEach
     public void initEach() {
         customerService = new CustomerService(customerRepository);
-        customerDTO = new CustomerDTO();
-        customerDTO.setId(ID);
-        customerDTO.setCode(CODE);
-        customerDTO.setName(NAME);
+        customer = new Customer();
+        customer.setId(ID);
+        customer.setCode(CODE);
+        customer.setName(NAME);
     }
 
     @Test
     void should_return_customer() {
         //given
         when(customerRepository.findByCustomerCode(any())).thenReturn(customer);
-        when(CustomerDTO.of(customer)).thenReturn(customerDTO);
+
         //when
         CustomerDTO customerDTO = customerService.getCustomer("c001");
 
