@@ -1,19 +1,10 @@
 pipeline {
 	agent any
+	node { git url: 'https://github.com/LukaszKusmierczyk/customer-service.git' }
 	stages {
-		stage('Hello') {
+		stage('build') {
 			steps {
-				echo 'Hello!!!'
-			}
-		}
-		stage('cat README') {
-			when {
-				branch "fix-*"
-			}
-			steps {
-				sh '''
-				echo cat README.md
-				'''
+				sh './gradlew clean build'
 			}
 		}
 	}
