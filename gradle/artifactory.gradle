@@ -1,0 +1,13 @@
+artifactory {
+    contextUrl = 'https://lkusmierczyk.jfrog.io/artifactory'
+    publish {
+        repository {
+            repoKey = 'customer-service-docker'
+            username = "${artifactoryUser}"
+            password = "${artifactoryPassword}"
+        }
+        defaults {
+            publishConfigs('archives')
+        }
+    }
+}

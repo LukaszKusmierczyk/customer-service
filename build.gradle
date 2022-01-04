@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id 'org.springframework.boot' version '2.5.0'
+    id "com.jfrog.artifactory" version "4.25.4"
 }
 
 group 'org.klukasz'
@@ -22,6 +23,7 @@ dependencies {
 }
 
 apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/artifactory.gradle"
 
 test {
     useJUnitPlatform()
